@@ -1,7 +1,7 @@
 # kitchen-encrypt-databags
 
 This gem extends the ChefZero provisioner for
-(test-kitchen)[https://github.com/test-kitchen/test-kitchen] so that the data
+[test-kitchen](https://github.com/test-kitchen/test-kitchen) so that the data
 bags provisioned in the target machine sandbox are encrypted during the
 provisioning phase.
 
@@ -54,9 +54,14 @@ Using this gem means you can store the data bag from above as:
 }
 ```
 
-Which you can edit with your standard system editor, no fuss, with the added
-bonus that anyone viewing your changes in a PR or diff can immediately see what
-has been changed.
+And it will be encrypted on the way into your sandbox machine with the given
+secret found in `encrypted_data_bag_secret_key_path`. This means you can use
+this data bag as `Chef::EncryptedDataBagItem.load("aws_keys")` in your
+cookbooks, while keeping your JSON fixture unencrypted and readable.
+
+Besides meaning you can edit fixtures directly in your chosen editor, there is
+the added bonus that anyone viewing your changes in diff can immediately see
+what has been changed.
 
 ## Contributing
 
