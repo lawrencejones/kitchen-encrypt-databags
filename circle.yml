@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.3.1
+  services:
+    - docker
+
+test:
+  override:
+    - bundle exec rubocop
+    - bundle exec rspec
+    - bundle exec kitchen test
