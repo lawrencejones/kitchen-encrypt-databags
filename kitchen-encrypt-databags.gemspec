@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 Gem::Specification.new do |gem|
   gem.name          = "kitchen-encrypt-databags"
-  gem.version       = "0.1.0"
+  gem.version       = "0.1.1"
   gem.summary       = "automatically encrypt databags when provisioning sandbox"
   gem.description   = "test-kitchen add-on"
   gem.authors       = ["Lawrence Jones"]
