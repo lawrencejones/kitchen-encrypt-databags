@@ -1,4 +1,4 @@
-# kitchen-encrypt-databags
+# kitchen-encrypt-databags ![kitchen-encrypt-databags Build Status](https://circleci.com/gh/lawrencejones/kitchen-encrypt-databags.png)
 
 This gem extends the ChefZero provisioner for
 [test-kitchen](https://github.com/test-kitchen/test-kitchen) so that the data
