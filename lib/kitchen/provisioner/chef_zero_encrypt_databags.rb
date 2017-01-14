@@ -53,7 +53,7 @@ module Kitchen
 
       def secret_key
         @secret_key ||= begin
-          secret_key_path = config[:encrypted_data_bag_secret_key_path]
+          secret_key_path = config[:encrypted_data_bag_secret_key_path] || ""
           # The strip is important- this is how Chef reads the secret file, and we'll need
           # to do the same if Chef is to decrypt anything with this key
           File.read(secret_key_path).strip if File.exist?(secret_key_path)

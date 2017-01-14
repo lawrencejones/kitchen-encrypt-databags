@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kitchen-encrypt-databags (1.0.0)
+    kitchen-encrypt-databags (0.1.0)
       chef (~> 12.17)
       test-kitchen (~> 1.13)
 
