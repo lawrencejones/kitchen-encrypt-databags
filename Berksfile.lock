@@ -1,0 +1,6 @@
+DEPENDENCIES
+  fake
+    path: test/fixtures/cookbooks/fake
+
+GRAPH
+  fake (1.0.0)
