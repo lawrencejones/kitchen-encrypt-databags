@@ -63,6 +63,19 @@ Besides meaning you can edit fixtures directly in your chosen editor, there is
 the added bonus that anyone viewing your changes in diff can immediately see
 what has been changed.
 
+## Tests
+
+kitchen-encrypt-databags has both unit and integration tests. The unit tests
+are written with [RSpec](http://rspec.info/), and can be invoked with `bundle
+exec rspec`. These test provisioning of a testing sandbox using temporary files
+on the local machine, and should hit each edge case.
+
+To verify the encryption process works correctly with test-kitchen, we also run
+tests against a fake cookbook located at `test/fixtures/cookbooks/fake`. This
+cookbook creates a file using contents of an encrypted data bag, then asserts
+that the content was decrypted correctly. These tests can be invoked with
+`bundle exec kitchen test`.
+
 ## Contributing
 
 Pull requests are welcome. Please fork the repo, then make a pull request from

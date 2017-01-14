@@ -1,0 +1,4 @@
+{
+  "id": "sudoers_enc",
+  "root": { "password": "much-entropy" }
+}
