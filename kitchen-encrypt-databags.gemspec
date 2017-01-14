@@ -14,6 +14,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^spec/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "chef",         "~> 12.17"
+  gem.add_dependency "chef",         ">= 12.10"
   gem.add_dependency "test-kitchen", "~> 1.13"
 end
