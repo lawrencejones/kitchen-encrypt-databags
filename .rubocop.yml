@@ -5,6 +5,9 @@ AllCops:
 Metrics/LineLength:
   Max: 90
 
+Style/Documentation:
+  Enabled: false
+
 Style/DotPosition:
   EnforcedStyle: trailing
 
@@ -19,3 +22,10 @@ Style/TrailingCommaInArguments:
 
 Style/StringLiterals:
   EnforcedStyle: 'double_quotes'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb

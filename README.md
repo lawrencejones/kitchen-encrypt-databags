@@ -1,12 +1,13 @@
 # kitchen-encrypt-databags ![kitchen-encrypt-databags Build Status](https://circleci.com/gh/lawrencejones/kitchen-encrypt-databags.png)
 
-This gem extends the ChefZero provisioner for
+This gem extends the ChefZero and Dokken provisioners for
 [test-kitchen](https://github.com/test-kitchen/test-kitchen) so that the data
 bags provisioned in the target machine sandbox are encrypted during the
 provisioning phase.
 
-Just add `gem 'kitchen-encrypt-databags'` to your `Gemfile` and select the
-`chef_zero_encrypt_databags` provisioner in your `.kitchen.yml` like so:
+Just add `gem 'kitchen-encrypt-databags'` to your `Gemfile` and select either
+the `chef_zero_encrypt_databags` or `dokken_encrypt_databags` provisioner in
+your `.kitchen.yml` like so:
 
 ```yaml
 ---
@@ -14,7 +15,7 @@ driver:
   name: docker
 
 provisioner:
-  name: chef_zero_encrypt_databags
+  name: dokken_encrypt_databags
   data_bags_path: text/fixtures/data_bags
   encrypted_data_bag_secret_key_path: test/fixtures/encrypted_data_bag_secret
 ```
