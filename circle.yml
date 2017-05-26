@@ -1,11 +1,18 @@
-machine:
-  ruby:
-    version: 2.3.1
-  services:
-    - docker
+version: 2
 
-test:
-  override:
-    - bundle exec rubocop
-    - bundle exec rspec
-    - bundle exec kitchen test
+jobs:
+  build:
+    machine: true
+    working_directory: ~/kitchen-encrypt-databags
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: dependency-cache-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rubocop
+      - run: bundle exec rspec
+      - run: bundle exec kitchen test
