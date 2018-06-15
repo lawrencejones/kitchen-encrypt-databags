@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+require "erb"
 require "kitchen"
 require "kitchen/provisioner/chef_zero"
 require "chef/encrypted_data_bag_item"
@@ -43,7 +45,8 @@ module Kitchen
       end
 
       def encrypt_data_bag(data_bag_path, secret_key)
-        data_bag = JSON.parse(File.read(data_bag_path))
+        data_bag_content = ERB.new(File.read(data_bag_path)).result
+        data_bag = JSON.parse(data_bag_content)
         ::Chef::EncryptedDataBagItem.encrypt_data_bag_item(data_bag, secret_key)
       rescue StandardError => err
         raise DataBagEncryptionException, <<-MSG

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "kitchen/provisioner/chef_zero_encrypt_databags"
 
 RSpec.describe(Kitchen::Provisioner::ChefZeroEncryptDatabags) do
@@ -14,6 +15,9 @@ RSpec.describe(Kitchen::Provisioner::ChefZeroEncryptDatabags) do
   def sandbox_path(path)
     Pathname.new(provisioner.sandbox_path).join(path)
   end
+
+  # This sets a global variable that should be accessible within ERB
+  before { Thread.current[:test_secret] = "test-secret" }
 
   let(:instance) do
     double(
@@ -51,6 +55,9 @@ RSpec.describe(Kitchen::Provisioner::ChefZeroEncryptDatabags) do
 
       # From sudoers fixture in spec/data_bags
       expect(edb["root"]).to eql("password" => "much-entropy")
+
+      # Should be rendered from the Thread variable
+      expect(edb["secret"]).to eql("test-secret")
     end
 
     context "when missing :encrypted_data_bag_secret_key_path" do
