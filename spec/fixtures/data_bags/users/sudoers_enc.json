@@ -1,4 +1,5 @@
 {
   "id": "sudoers_enc",
+  "secret": "<%= Thread.current[:test_secret] %>",
   "root": { "password": "much-entropy" }
 }
